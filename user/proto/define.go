@@ -1,4 +1,4 @@
-package model
+package proto
 
 import (
 	scyna "github.com/scyna/core"
