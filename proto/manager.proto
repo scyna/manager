@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option csharp_namespace = "proto";
+option  go_package = ".;proto";
+
+message CreateModuleRequest {
+  string Code = 1;
+  string Secret = 2;
+}
+
+message CreateClientRequest {
+  string ID = 1;
+  string Secret = 2;
+}
+
+message CreateEndpointRequest {
+  string Module = 1;
+  string URL = 2;
+  string Name = 3;
+}
+
+message CreateConsumerRequest{
+  string Sender = 1; /* sender context */
+  string Receiver = 2; /* receiver context */
+}
