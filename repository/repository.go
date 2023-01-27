@@ -2,15 +2,14 @@ package repository
 
 import (
 	scyna "github.com/scyna/core"
-	"github.com/scyna/manager/domain"
 )
 
 const MODULE_TABLE = "scyna.module"
 
-type managerRepository struct {
+type Repository struct {
 	LOG scyna.Logger
 }
 
-func NewRepository(LOG scyna.Logger) domain.IRepository {
-	return &managerRepository{LOG: LOG}
+func LoadRepository(LOG scyna.Logger) *Repository {
+	return &Repository{LOG: LOG}
 }

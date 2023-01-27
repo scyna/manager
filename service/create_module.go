@@ -3,34 +3,29 @@ package service
 import (
 	validation "github.com/go-ozzo/ozzo-validation"
 	scyna "github.com/scyna/core"
-	"github.com/scyna/manager/domain"
 	"github.com/scyna/manager/model"
 	proto "github.com/scyna/manager/proto/generated"
+	"github.com/scyna/manager/repository"
 )
 
 func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest) scyna.Error {
-
-	repository := domain.LoadRepository(ctx.Logger)
+	var ret scyna.Error
+	repository := repository.LoadRepository(ctx.Logger)
 
 	if err := validateCreateModuleRequest(request); err != nil {
 		return scyna.REQUEST_INVALID
 	}
 
-	var ret scyna.Error
-	if ret = domain.AssureModuleNotExists(repository, request.Code); ret != nil {
-		return ret
+	if _, ret := repository.GetModule(request.Code); ret == nil {
+		return model.MODULE_EXISTED
 	}
 
 	module := model.Module{
-		Code: request.Code,
+		Code:   request.Code,
+		Secret: request.Secret,
 	}
 
-	if module.Secret, ret = model.ParseSecret(request.Secret); ret != nil {
-		ctx.Logger.Error("wrong password")
-		return ret
-	}
-
-	if ret = repository.CreateModule(ctx.Logger, &module); ret != nil {
+	if ret = repository.CreateModule(&module); ret != nil {
 		return ret
 	}
 

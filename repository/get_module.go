@@ -6,7 +6,7 @@ import (
 	"github.com/scyna/manager/model"
 )
 
-func (r *managerRepository) GetModule(code string) (*model.Module, scyna.Error) {
+func (r *Repository) GetModule(code string) (*model.Module, scyna.Error) {
 	var module model.Module
 
 	if err := qb.Select(MODULE_TABLE).
