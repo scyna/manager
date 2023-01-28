@@ -9,14 +9,13 @@ import (
 )
 
 func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest) scyna.Error {
-	var ret scyna.Error
 	repository := repository.LoadRepository(ctx.Logger)
 
 	if err := validateCreateModuleRequest(request); err != nil {
 		return scyna.REQUEST_INVALID
 	}
 
-	if _, ret := repository.GetModule(request.Code); ret == nil {
+	if _, err := repository.GetModule(request.Code); err == nil {
 		return model.MODULE_EXISTED
 	}
 
@@ -25,8 +24,8 @@ func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest
 		Secret: request.Secret,
 	}
 
-	if ret = repository.CreateModule(&module); ret != nil {
-		return ret
+	if err := repository.CreateModule(&module); err != nil {
+		return err
 	}
 
 	return scyna.OK
