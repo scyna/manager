@@ -33,7 +33,7 @@ func (s *moduleService) AssureModuleNotExist(moduleName string) scyna.Error {
 	return nil
 }
 
-func (s *moduleService) AssureModuleExist(moduleName string) scyna.Error {
+func (s *moduleService) GetModule(moduleName string) (*model.Module, scyna.Error) {
 	// TODO
-	return nil
+	return &model.Module{}, nil
 }

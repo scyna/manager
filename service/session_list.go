@@ -13,12 +13,15 @@ import (
 func ListSessionHandler(ctx *scyna.Endpoint, request *proto.ListSessionRequest) scyna.Error {
 	service := domain.NewModuleService(&ctx.Context)
 
-	if err := service.AssureModuleExist(request.ModuleCode); err != nil {
+	var module *model.Module
+	if ret, err := service.GetModule(request.ModuleCode); err != nil {
 		return err
+	} else {
+		module = ret
 	}
 
 	var sessions []model.Session
-	if ret, err := service.Repository.ListSession(request.ModuleCode); err != nil {
+	if ret, err := service.Repository.ListSession(module); err != nil {
 		return err
 	} else {
 		sessions = ret
