@@ -23,6 +23,8 @@ func main() {
 	defer scyna.Release()
 
 	scyna.RegisterEndpoint(service.CREATE_MODULE_URL, service.CreateModuleHandler)
+	scyna.RegisterEndpoint(service.GET_MODULE_URL, service.GetModuleHandler)
+	scyna.RegisterEndpoint(service.LIST_MODULE_URL, service.ListSessionHandler)
 
 	scyna.Start()
 }

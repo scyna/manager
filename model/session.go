@@ -6,11 +6,14 @@ import (
 )
 
 type Session struct {
-	id          int64
-	lastUpdated time.Time
-	state       int
+	Module      string
+	Id          int64
+	LastUpdated time.Time
+	State       int
+	StartTime   time.Time
+	EndTime     time.Time
 }
 
 func (s Session) String() string {
-	return strconv.FormatInt(s.id, 10)
+	return strconv.FormatInt(s.Id, 10)
 }

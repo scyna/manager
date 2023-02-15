@@ -12,6 +12,8 @@ message GetModuleRequest {
   string Code = 1;
 }
 
+message ListModuleRequest {}
+
 message ListSessionsOfModuleRequest {
   string Code = 1;
 }
@@ -30,4 +32,20 @@ message CreateEndpointRequest {
 message CreateConsumerRequest {
   string Sender = 1;   /* sender context */
   string Receiver = 2; /* receiver context */
+}
+
+message ListSessionRequest {
+  string ModuleCode = 1;
+}
+
+message SessionItem {
+  string SessionID = 1;
+  int32  State = 2;
+  string LastUpdated = 3;
+  string StartTime = 4;
+  string EndTime = 5;
+}
+
+message ListSessionResponse {
+  repeated SessionItem sessions = 1;
 }

@@ -38,8 +38,6 @@ github.com/scylladb/go-reflectx v1.0.1 h1:b917wZM7189pZdlND9PbIJ6NQxfDPfBvUaQ7cj
 github.com/scylladb/go-reflectx v1.0.1/go.mod h1:rWnOfDIRWBGN0miMLIcoPt/Dhi2doCMZqwMCJ3KupFc=
 github.com/scylladb/gocqlx/v2 v2.7.0 h1:/w1VeJHCEAsg9eTculTvIS9eIe/VmEu0clhlH1CF7lc=
 github.com/scylladb/gocqlx/v2 v2.7.0/go.mod h1:jKhM0/LkEAhEOSwd10TCMQdlC5x8aEzK7cXjQcPyMJ0=
-github.com/scyna/core v1.0.5 h1:wJmdrMueQIRIO7I23HJnmVEz22pRibx48rWA6FdTiaU=
-github.com/scyna/core v1.0.5/go.mod h1:QAS41shlVGFUYHM8OMMizsBY+dkAWz8quSfsa6OLqmg=
 github.com/scyna/core v1.0.8 h1:mBYAU4p388sEW+OXE5kvDnkW3LSV7i81mxcqsh/D9QI=
 github.com/scyna/core v1.0.8/go.mod h1:QAS41shlVGFUYHM8OMMizsBY+dkAWz8quSfsa6OLqmg=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

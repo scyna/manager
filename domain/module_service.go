@@ -32,3 +32,8 @@ func (s *moduleService) AssureModuleNotExist(moduleName string) scyna.Error {
 
 	return nil
 }
+
+func (s *moduleService) AssureModuleExist(moduleName string) scyna.Error {
+	// TODO
+	return nil
+}

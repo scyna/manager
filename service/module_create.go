@@ -10,7 +10,7 @@ import (
 func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest) scyna.Error {
 	service := domain.NewModuleService(&ctx.Context)
 
-	if _, err := service.Repository.GetModule(request.Code); err == nil {
+	if err := service.AssureModuleNotExist(request.Code); err == nil {
 		return model.MODULE_EXISTED
 	}
 
@@ -20,6 +20,7 @@ func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest
 		return scyna.REQUEST_INVALID
 	}
 
+	// Because module has no entity_id => it creates directly module in repostory
 	if err := service.Repository.CreateModule(&module); err != nil {
 		return err
 	}
