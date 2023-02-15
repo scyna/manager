@@ -6,10 +6,6 @@ import (
 
 const MODULE_TABLE = "scyna.module"
 
-type Repository struct {
+type ModuleRepository struct {
 	LOG scyna.Logger
-}
-
-func LoadRepository(LOG scyna.Logger) *Repository {
-	return &Repository{LOG: LOG}
 }

@@ -5,7 +5,7 @@ import (
 	"github.com/scyna/manager/model"
 )
 
-func (r *ModuleRepository) CreateModule(module *model.Module) scyna.Error {
+func (r *ModuleRepository) ListModule() ([]model.Module, scyna.Error) {
 	// TODO
-	return nil
+	return nil, nil
 }

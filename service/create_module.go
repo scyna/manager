@@ -1,38 +1,28 @@
 package service
 
 import (
-	validation "github.com/go-ozzo/ozzo-validation"
 	scyna "github.com/scyna/core"
+	"github.com/scyna/manager/domain"
 	"github.com/scyna/manager/model"
 	proto "github.com/scyna/manager/proto/generated"
-	"github.com/scyna/manager/repository"
 )
 
 func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest) scyna.Error {
-	repository := repository.LoadRepository(ctx.Logger)
+	service := domain.NewModuleService(&ctx.Context)
 
-	if err := validateCreateModuleRequest(request); err != nil {
-		return scyna.REQUEST_INVALID
-	}
-
-	if _, err := repository.GetModule(request.Code); err == nil {
+	if _, err := service.Repository.GetModule(request.Code); err == nil {
 		return model.MODULE_EXISTED
 	}
 
-	module := model.Module{
-		Code:   request.Code,
-		Secret: request.Secret,
+	module, err := model.NewModule(request.Code, request.Secret)
+	if err != nil {
+		ctx.Logger.Error(err.Error())
+		return scyna.REQUEST_INVALID
 	}
 
-	if err := repository.CreateModule(&module); err != nil {
+	if err := service.Repository.CreateModule(&module); err != nil {
 		return err
 	}
 
 	return scyna.OK
-}
-
-func validateCreateModuleRequest(request *proto.CreateModuleRequest) error {
-	return validation.ValidateStruct(request,
-		validation.Field(&request.Code, validation.Required, validation.Length(1, 50)),
-		validation.Field(&request.Secret, validation.Required, validation.Length(8, 50)))
 }

@@ -6,21 +6,30 @@ import (
 	"github.com/scyna/manager/model"
 )
 
-func (r *Repository) GetModule(code string) (*model.Module, scyna.Error) {
-	var module model.Module
+func (r *ModuleRepository) GetModule(moduleName string) (*model.Module, scyna.Error) {
+	var module struct {
+		code   string `db:"code"`
+		secret string `db:"secret"`
+	}
 
 	if err := qb.Select(MODULE_TABLE).
-		Columns("code").
+		Columns("code", "secret").
 		Where(qb.Eq("code")).
 		Limit(1).
-		Query(scyna.DB).Bind(code).GetRelease(&module); err != nil {
+		Query(scyna.DB).
+		Bind(moduleName).
+		GetRelease(&module); err != nil {
 		r.LOG.Error(err.Error())
 		return nil, model.MODULE_NOT_EXIST
 	}
 
-	ret := &model.Module{
-		Code: module.Code,
+	var ret model.Module
+	if moduleData, err := model.NewModule(module.code, module.secret); err != nil {
+		r.LOG.Error(err.Error())
+		return nil, model.MODULE_NOT_EXIST
+	} else {
+		ret = moduleData
 	}
 
-	return ret, nil
+	return &ret, nil
 }

@@ -2,7 +2,7 @@ module github.com/scyna/manager
 
 go 1.18
 
-require github.com/scyna/core v1.0.5
+require github.com/scyna/core v1.0.8
 
 require (
 	github.com/gocql/gocql v1.0.0 // indirect
