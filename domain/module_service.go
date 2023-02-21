@@ -14,7 +14,7 @@ type moduleService struct {
 func NewModuleService(context *scyna.Context) *moduleService {
 	return &moduleService{
 		context:    context,
-		Repository: &repository.ModuleRepository{LOG: context.Logger},
+		Repository: &repository.ModuleRepository{LOG: context},
 	}
 }
 

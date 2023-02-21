@@ -16,7 +16,7 @@ func CreateModuleHandler(ctx *scyna.Endpoint, request *proto.CreateModuleRequest
 
 	module, err := model.NewModule(request.Code, request.Secret)
 	if err != nil {
-		ctx.Logger.Error(err.Error())
+		ctx.Error(err.Error())
 		return scyna.REQUEST_INVALID
 	}
 
