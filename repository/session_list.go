@@ -5,7 +5,7 @@ import (
 	"github.com/scyna/manager/model"
 )
 
-func (r *ModuleRepository) ListSession(moduleName string) ([]model.Session, scyna.Error) {
+func (r *ModuleRepository) ListSession(module *model.Module) ([]model.Session, scyna.Error) {
 	// TODO
 	return nil, nil
 }
