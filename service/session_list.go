@@ -10,8 +10,8 @@ import (
 	proto "github.com/scyna/manager/proto/generated"
 )
 
-func ListSessionHandler(ctx *scyna.Endpoint, request *proto.ListSessionRequest) scyna.Error {
-	service := domain.NewModuleService(&ctx.Context)
+func ListSessionHandler(ctx *scyna.Context, request *proto.ListSessionRequest) scyna.Error {
+	service := domain.NewModuleService(ctx)
 
 	var module *model.Module
 	if ret, err := service.GetModule(request.ModuleCode); err != nil {
