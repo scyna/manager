@@ -7,7 +7,7 @@ import (
 	proto "github.com/scyna/manager/proto/generated"
 )
 
-func CreateModuleHandler(ctx *scyna.Context, request *proto.CreateModuleRequest) scyna.Error {
+func CreateModuleHandler(ctx scyna.Context, request *proto.CreateModuleRequest) scyna.Error {
 	service := domain.NewModuleService(ctx)
 
 	if err := service.AssureModuleNotExist(request.Code); err == nil {

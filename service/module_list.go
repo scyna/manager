@@ -5,7 +5,7 @@ import (
 	proto "github.com/scyna/manager/proto/generated"
 )
 
-func ListModuleHandler(ctx *scyna.Context, request *proto.ListModuleRequest) scyna.Error {
+func ListModuleHandler(ctx *scyna.Endpoint, request *proto.ListModuleRequest) scyna.Error {
 	// TODO
 	return scyna.OK
 }

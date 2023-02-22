@@ -8,10 +8,10 @@ import (
 
 type moduleService struct {
 	Repository *repository.ModuleRepository
-	context    *scyna.Context
+	context    scyna.Context
 }
 
-func NewModuleService(context *scyna.Context) *moduleService {
+func NewModuleService(context scyna.Context) *moduleService {
 	return &moduleService{
 		context:    context,
 		Repository: &repository.ModuleRepository{LOG: context},
