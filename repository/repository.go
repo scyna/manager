@@ -1,11 +1,7 @@
 package repository
 
-import (
-	scyna "github.com/scyna/core"
-)
-
-const MODULE_TABLE = "scyna.module"
-
-type ModuleRepository struct {
-	LOG scyna.Logger
-}
+const KEYSPACE = "scyna2"
+const SETTING_TABLE = KEYSPACE + ".setting"
+const MODULE_TABLE = KEYSPACE + ".module"
+const CLIENT_TABLE = KEYSPACE + ".client"
+const APPLICATION_TABLE = KEYSPACE + ".application"

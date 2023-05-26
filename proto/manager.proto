@@ -3,49 +3,157 @@ option  java_multiple_files = true;
 option  csharp_namespace = "proto";
 option  go_package = ".;proto";
 
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+  string session = 1;
+}
+
+message Config {
+  string natsUrl = 1;
+  string natsUsername = 2;
+  string natsPassword = 3;
+  string dbHost = 4;
+  string dbUsername = 5;
+  string dbPassword = 6;
+  string dbLocation = 7;
+}
+
+message Module {
+  string code = 1;
+  string name = 2;
+
+  Config config = 3;
+}
+
 message CreateModuleRequest {
-  string Code = 1;
-  string Secret = 2;
+  string code = 1;
+  string secret = 2;
+  string name = 3;
+  Config config = 4;
+}
+
+message UpdateModuleRequest {
+  string code = 1;
+  string name = 2;
+}
+
+message ChangeSecretModuleRequest {
+  string code = 1;
+  string secret = 2; // secret of module
+  string password = 3; // password of user
+}
+
+message DeleteModuleRequest {
+  string code = 1;
+  string password = 2; // password of user
+}
+
+message ListModuleRequest {
+}
+
+message ListModuleResponse {
+  repeated Module modules = 1;
 }
 
 message GetModuleRequest {
-  string Code = 1;
+  string code = 1;
 }
 
-message ListModuleRequest {}
+message GetModuleResponse {
+  Module module = 1;
+}
 
-message ListSessionsOfModuleRequest {
-  string Code = 1;
+message UpdateConfigModuleRequest {
+  string code = 1;
+  Config config = 2;
+}
+
+message Application {
+  string code = 1;
+  string name = 2;
+  string authPath = 3;
+}
+
+message CreateApplicationRequest {
+  string code = 1;
+  string authPath = 2;
+  string name = 3;
+}
+
+message UpdateApplicationRequest {
+  string code = 1;
+  string authPath = 2;
+  string name = 3;
+}
+
+message GetApplicationRequest {
+  string code = 1;
+}
+
+message GetApplicationResponse {
+  Application application = 1;
+}
+
+message ListApplicationRequest {
+}
+
+message ListApplicationResponse {
+  repeated Application applications = 1;
+}
+
+message DeleteApplicationRequest {
+  string code = 1;
+}
+
+message UpdateApplicationSignal {
+  string code = 1;
+}
+
+message Client {
+  string id = 1;
+  string name = 2;
 }
 
 message CreateClientRequest {
-  string ID = 1;
-  string Secret = 2;
+  string id = 1;
+  string name = 2;
+  string secret = 3;
 }
 
-message CreateEndpointRequest {
-  string Module = 1;
-  string URL = 2;
-  string Name = 3;
+message UpdateClientRequest {
+  string id = 1;
+  string name = 2;
 }
 
-message CreateConsumerRequest {
-  string Sender = 1;   /* sender context */
-  string Receiver = 2; /* receiver context */
+message GetClientRequest {
+  string id = 1;
 }
 
-message ListSessionRequest {
-  string ModuleCode = 1;
+message GetClientResponse {
+  Client client = 1;
 }
 
-message SessionItem {
-  string SessionID = 1;
-  int32  State = 2;
-  string LastUpdated = 3;
-  string StartTime = 4;
-  string EndTime = 5;
+message ListClientRequest {
 }
 
-message ListSessionResponse {
-  repeated SessionItem sessions = 1;
+message ListClientResponse {
+  repeated Client clients = 1;
+}
+
+message DeleteClientRequest {
+  string id = 1;
+}
+
+message UpdateClientSignal {
+  string id = 1;
+}
+
+message ChangeSecertClientRequest {
+  string id = 1;
+  string secret = 2; // secret of client
+  string password = 3; // password of user
 }
