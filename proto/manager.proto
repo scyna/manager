@@ -157,3 +157,49 @@ message ChangeSecertClientRequest {
   string secret = 2; // secret of client
   string password = 3; // password of user
 }
+
+message Setting {
+  string module = 1;
+  string key = 2;
+  string value = 3;
+}
+
+message CreateSettingRequest {
+  string module = 1;
+  string key = 2;
+  string value = 3;
+}
+
+message UpdateSettingRequest {
+  string module = 1;
+  string key = 2;
+  string value = 3;
+}
+
+message GetSettingRequest {
+  string module = 1;
+  string key = 2;
+}
+
+message GetSettingResponse {
+  Setting setting = 1;
+}
+
+message ListSettingRequest {
+  string module = 1;
+}
+
+message ListSettingResponse {
+  repeated Setting settings = 1;
+}
+
+message DeleteSettingRequest {
+  string module = 1;
+  string key = 2;
+}
+
+message UpdateSettingSignal {
+  string module = 1;
+  string key = 2;
+}
+

@@ -9,4 +9,6 @@ var (
 	APPLICATION_NOT_EXIST = scyna.NewError(103, "Application Not Exist")
 	CLIENT_EXISTED        = scyna.NewError(104, "Client Existed")
 	CLIENT_NOT_EXIST      = scyna.NewError(105, "Client Not Exist")
+	SETTING_NOT_EXIST     = scyna.NewError(106, "Setting Not Exist")
+	SETTING_EXISTED       = scyna.NewError(107, "Setting Existed")
 )

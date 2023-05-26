@@ -25,4 +25,10 @@ const (
 	LIST_CLIENT_EP          = BASEPATH + "/manager/client/list"
 	GET_CLIENT_EP           = BASEPATH + "/manager/client/get"
 	CHANGE_SECRET_CLIENT_EP = BASEPATH + "/manager/client/change-secret"
+
+	CREATE_SETTING_EP = BASEPATH + "/manager/setting/create"
+	UPDATE_SETTING_EP = BASEPATH + "/manager/setting/update"
+	DELETE_SETTING_EP = BASEPATH + "/manager/setting/delete"
+	LIST_SETTING_EP   = BASEPATH + "/manager/setting/list"
+	GET_SETTING_EP    = BASEPATH + "/manager/setting/get"
 )

@@ -41,5 +41,10 @@ func main() {
 	scyna.RegisterEndpoint(service.GET_CLIENT_EP, service.GetClientHandler)
 	scyna.RegisterEndpoint(service.LIST_CLIENT_EP, service.ListClientHandler)
 	scyna.RegisterEndpoint(service.CHANGE_SECRET_CLIENT_EP, service.ChangeSecretClientHandler)
+	scyna.RegisterEndpoint(service.CREATE_SETTING_EP, service.CreateSettingHandler)
+	scyna.RegisterEndpoint(service.UPDATE_SETTING_EP, service.UpdateSettingHandler)
+	scyna.RegisterEndpoint(service.DELETE_SETTING_EP, service.DeleteSettingHandler)
+	scyna.RegisterEndpoint(service.GET_SETTING_EP, service.GetSettingHandler)
+	scyna.RegisterEndpoint(service.LIST_SETTING_EP, service.ListSettingHandler)
 	scyna.Start()
 }
